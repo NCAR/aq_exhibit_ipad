@@ -1,349 +1,46 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-    /* set the CSS */
-    
-    body {
-        font: 12px Arial;
-    }
-    
-    path {
-        stroke: steelblue;
-        stroke-width: 2;
-        fill: none;
-    }
-    
-    .axis path,
-    .axis line {
-        fill: none;
-        stroke: grey;
-        stroke-width: 1;
-        shape-rendering: crispEdges;
-    }
-    
-    .navigator .data {
-        fill: lightgrey;
-        stroke-width: 0px;
-    }
-    
-    .navigator .line {
-        fill: none;
-        stroke: darkgrey;
-        stroke-width: 1px;
-    }
-    
-    .navigator .viewport {
-        stroke: grey;
-        fill: black;
-        fill-opacity: 0.2;
-    }
-    
-    .chart .overlay {
-        stroke-width: 0px;
-        fill-opacity: 0;
-    }
-
-</style>
-
-<body>
-   <!--// derived from: http://blog.scottlogic.com/2014/09/19/interactive.html //-->
-    <div id="chart"></div>
-    <!-- load the d3.js library -->
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-
-    <script>
-        // Set the dimensions of the canvas / graph
-        var margin = {
-                top: 30,
-                right: 20,
-                bottom: 30,
-                left: 50
-            },
-            width = 1600 - margin.left - margin.right,
-            height = 960 - margin.top - margin.bottom;
-
-        var maxDate;
-        var minDate;
-        // Parse the date / time
-        var parseDate = d3.time.format("%d-%m-%y %H:%M:%S").parse;
-
-        var xScale = d3.time.scale()
-            .range([0, width]),
-            yScale = d3.scale.linear()
-            .range([height, 0]);
-
-        // Adds the main chart
-        var plotChart = d3.select("#chart")
-            .append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform",
-                "translate(" + margin.left + "," + margin.top + ")");
-        var plotArea = plotChart.append('g')
-            .attr('clip-path', 'url(#plotAreaClip)');
-
-        plotArea.append('clipPath')
-            .attr('id', 'plotAreaClip')
-            .append('rect')
-            .attr({
-                width: width,
-                height: height
-            });
-
-
-        // Define the data series
-        var series = d3.svg.line();
-
-        // Add the data series path.
-
-        // Add the valueline path.
-        var dataSeries = plotArea.append("path")
-            .attr("class", "series");
-
-
-        // Define the main axes
-        var xAxis = d3.svg.axis()
-            .scale(xScale)
-            .orient('bottom')
-            .ticks(5),
-            yAxis = d3.svg.axis()
-            .scale(yScale)
-            .orient('left');
-
-        var plotXAxis = plotChart.append('g')
-            .attr('class', 'x axis')
-            .attr('transform', 'translate(0,' + height + ')');
-
-
-        //define lower chart
-        var navWidth = width,
-            navHeight = 100 - margin.top - margin.bottom;
-
-        var navChart = d3.select('#chart').classed('chart', true).append('svg')
-            .classed('navigator', true)
-            .attr('width', navWidth + margin.left + margin.right)
-            .attr('height', navHeight + margin.top + margin.bottom)
-            .append('g')
-            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-        var navData = d3.svg.area();
-        var navLine = d3.svg.line();
-        var viewport = d3.svg.brush();
-        var zoom = d3.behavior.zoom();
-        var overlay = d3.svg.area();
-
-
-        // add zoom behavior
-        zoom
-            .x(xScale)
-            .on('zoom', function() {
-                if (xScale.domain()[0] < minDate) {
-                    var x = zoom.translate()[0] - xScale(minDate) + xScale.range()[0];
-                    zoom.translate([x, 0]);
-                } else if (xScale.domain()[1] > maxDate) {
-                    var x = zoom.translate()[0] - xScale(maxDate) + xScale.range()[1];
-                    zoom.translate([x, 0]);
-                }
-                redrawChart(data);
-                updateViewportFromChart();
-            });
-
-
-        /**
-         *
-         *
-         **/
-        function redrawChart(data) {
-
-            dataSeries
-                .attr("d", series(data));
-
-            plotChart.select('.x.axis').call(xAxis);
-        }
-
-        /**
-         *
-         *
-         **/
-        function updateViewportFromChart() {
-
-            if ((xScale.domain()[0] <= minDate) && (xScale.domain()[1] >= maxDate)) {
-
-                viewport.clear();
-            } else {
-
-                viewport.extent(xScale.domain());
-            }
-
-            navChart.select('.viewport').call(viewport);
-        }
-
-        /**
-         *
-         *
-         **/
-
-        function updateZoomFromChart() {
-
-            zoom.x(xScale);
-
-            var fullDomain = maxDate - minDate,
-                currentDomain = xScale.domain()[1] - xScale.domain()[0];
-
-            var minScale = currentDomain / fullDomain,
-                maxScale = minScale * 20;
-
-            zoom.scaleExtent([minScale, maxScale]);
-        }
-
-
-        // Get the data
-        d3.csv("data/data.csv", function(error, data) {
-            data.forEach(function(d) {
-                d.date = parseDate(d.day.replace(/\//g, '-') + ' ' + d.time);
-                d.close = +parseFloat(((d.ozone.replace('$', '') * 0.9561) + 0.99461));
-
-            });
-
-            var minN = d3.min(data, function(d) {
-                    return d.date;
-                }).getTime(),
-                maxN = d3.max(data, function(d) {
-                    return d.date;
-                }).getTime();
-            minDate = new Date(minN - 8.64e7);
-            maxDate = new Date(maxN + 8.64e7);
-            var yMin = d3.min(data, function(d) {
-                    return d.low;
-                }),
-                yMax = d3.max(data, function(d) {
-                    return d.high;
-                });
-
-            // Set the scales
-
-
-            // Scale the range of the data
-            xScale.domain(d3.extent(data, function(d) {
-                return d.date;
-            }));
-            yScale.domain([0, d3.max(data, function(d) { return d.close; })]);
-
-            // draw y axis
-            plotChart.append('g')
-            .attr('class', 'y axis')
-            .call(yAxis);
-            
-            series
-                .x(function(d) {
-                    return xScale(d.date);
-                })
-                .y(function(d) {
-                    return yScale(d.close);
-                });
-            dataSeries
-                .attr("d", series(data));
-
-
-            plotXAxis
-                .call(xAxis);
-            // define lower chart scales
-            var navXScale = d3.time.scale()
-                .range([0, navWidth]),
-                navYScale = d3.scale.linear()
-                .range([navHeight, 0]);
-            navXScale.domain(d3.extent(data, function(d) {
-                return d.date;
-            }));
-            navYScale.domain([0, d3.max(data, function(d) {
-                return d.close;
-            })]);
-
-            //define nav xaxis
-            var navXAxis = d3.svg.axis()
-                .scale(navXScale)
-                .orient('bottom');
-
-            navChart.append('g')
-                .attr('class', 'x axis')
-                .attr('transform', 'translate(0,' + navHeight + ')')
-                .call(navXAxis);
-
-
-            // draw lower chart
-            navData
-                .x(function(d) {
-                    return navXScale(d.date);
-                })
-                .y0(navHeight)
-                .y1(function(d) {
-                    return navYScale(d.close);
-                });
-
-            navLine
-                .x(function(d) {
-                    return navXScale(d.date);
-                })
-                .y(function(d) {
-                    return navYScale(d.close);
-                });
-
-            navChart.append('path')
-                .attr('class', 'data')
-                .attr('d', navData(data));
-
-            navChart.append('path')
-                .attr('class', 'line')
-                .attr('d', navLine(data));
-
-
-
-            // define viewport
-            viewport
-                .x(navXScale)
-                .on("brush", function() {
-                    xScale.domain(viewport.empty() ? navXScale.domain() : viewport.extent());
-                    redrawChart(data);
-                });
-
-            // addviewport to navchart
-            navChart.append("g")
-                .attr("class", "viewport")
-                .call(viewport)
-                .selectAll("rect")
-                .attr("height", navHeight);
-
-            // define overlay
-            overlay
-                .x(function(d) {
-                    return xScale(d.date);
-                })
-                .y0(0)
-                .y1(height);
-
-            plotArea.append('path')
-                .attr('class', 'overlay')
-                .attr('d', overlay(data))
-                .call(zoom);
-
-
-            viewport.on("brushend", function() {
-                updateZoomFromChart();
-            });
-
-            // data is in 5 minute intervals
-            // so math it to get approx 1 week
-            var daysShown = (60/5)*24*7;
-            var one = data[data.length - daysShown - 1].date;
-            var two = data[data.length - 1].date;
-            xScale.domain([one, two]);
-
-            redrawChart(data);
-            updateViewportFromChart();
-            updateZoomFromChart();
-
-        });
-
-    </script>
+<html lang="en-US" ng-app="edu.ucar.scied.aq">
+
+<head>
+    <title>Air Quality</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    <link href="/core/bower_components/normalize.css/normalize.css" rel="stylesheet">
+    <link href="/core/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/core/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/core/bower_components/angular-material/angular-material.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/core/css/base.css" rel="stylesheet">
+    <link href="/core/css/modal.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body ng-controller="webAppCtrl as app">
+    <div ng-view></div>
+
+    <script src="/core/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/core/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/d3/d3.min.js"></script>
+    <script src="bower_components/nvd3/build/nv.d3.js"></script>
+    <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+    <script src="/core/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/core/bower_components/angular-touch/angular-touch.min.js"></script>
+    <script src="/core/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="/core/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/core/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="/core/bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="/core/bower_components/angular-material/angular-material.min.js"></script>
+    <script src="/core/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/core/js/libraries/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/app.js"></script>    
+    <script src="/core/js/webapp/webapp.service.js"></script>
+    <script src="/core/js/webapp/webapp.controller.js"></script>
+    <script src="/core/js/modal/modal.directive.js"></script>
+    <script src="/core/js/shared/filters.js"></script>
+    <script src="/core/js/shared/services.js"></script>
+    <script src="js/shared/aq.controller.js"></script>
+    <script src="js/chart/chart.directive.js"></script>
 </body>
+
+</html>

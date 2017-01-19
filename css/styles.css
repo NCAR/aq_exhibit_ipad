@@ -10,3 +10,17 @@ text {
             height: 100%;
             width: 100%;
         }
+
+.nvd3 .nv-brushBackground rect {
+    stroke:transparent;
+    stroke-width:0;
+    fill:#000;
+    fill-opacity: .3;
+    
+}
+.nv-brush .extent {
+    stroke:#efefef;
+    stroke-width:2;
+    fill:#fff !important;
+    fill-opacity: .3 !important;
+}

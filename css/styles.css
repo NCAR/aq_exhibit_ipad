@@ -7,9 +7,10 @@ text {
         html, body, #chart, svg {
             margin: 0px;
             padding: 0px;
-            height: 100%;
-            width: 100%;
         }
+body {
+    background-color:#fff;
+}
 
 .nvd3 .nv-brushBackground rect {
     stroke:transparent;

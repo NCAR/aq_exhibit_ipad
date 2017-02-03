@@ -1,5 +1,5 @@
 <div class="graph">
-    <h1 class="title" ng-bind-html="title | unsafe"></h1>
-    <img ng-src="/assets/images/aq/{{range}}_{{datatype}}.jpg">
-    <h2 class="axis_y" ng-bind-html="axis_y_label | unsafe"></h2>
+    <h1 class="title" ng-bind-html="data.title | unsafe"></h1>
+    <img ng-src="/assets/images/aq/{{data.range}}_{{data.datatype}}.jpg">
+    <h2 class="axis_y" ng-bind-html="data.axis_y_label | unsafe"></h2>
 </div>

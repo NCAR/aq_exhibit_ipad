@@ -3,6 +3,7 @@
     angular.module("edu.ucar.scied.aq", [
         "edu.ucar.scied.aq.controller",
         "edu.ucar.scied.chart_image.directive",
+        "edu.ucar.scied.tab.directive",
         "edu.ucar.scied.webapp.controller",
         "edu.ucar.scied.webapp.service",
         "edu.ucar.scied.modal.directive",

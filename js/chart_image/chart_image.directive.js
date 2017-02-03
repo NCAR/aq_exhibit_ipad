@@ -6,9 +6,17 @@
     function graphGenerator() {
         var directiveDefinitionObject = {
             restrict: 'E',
-            scope: true,
+            scope: false,
             replace: false,
             templateUrl: "js/chart_image/chart.html",
+            controller: ['$scope', function graphGeneratorCtrl($scope){
+                $scope.generateImageUrl = generateImageUrlFunc;
+
+                function generateImageUrlFunc(range) {
+                    $scope.data.range = range;
+                }
+
+            }]
         };
         return directiveDefinitionObject;
 

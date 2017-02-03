@@ -19,7 +19,7 @@
             tabName: 'Particulate Matter',
             datatype:'pm',
             range:'oneweek',
-            axis_y_label: "PM2.5 &mu;g/m3"
+            axis_y_label: "PM2.5 &mu;g/m<sup>3</sup>"
         };
 
         

@@ -17,10 +17,16 @@ body {
     -o-transform: rotate(-90deg);
     /* Internet Explorer */
     filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=3);
-    left: -120px;
     position: absolute;
     font-weight:normal;
+}
+.axis_y.ozone {
     top:200px;
+    left: -120px;
+}
+.axis_y.pm {
+    top: 200px;
+    left: -60px;
 }
 .axis_x,
 .axis_y {

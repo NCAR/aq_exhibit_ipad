@@ -13,7 +13,7 @@
             tabName: 'Ozone',
             datatype:'ozone',
             range:'oneweek',
-            axis_y_label: "Ozone (parts per million)"
+            axis_y_label: "Ozone (parts per billion)"
         };
         $scope.pm = {
             tabName: 'Particulate Matter',

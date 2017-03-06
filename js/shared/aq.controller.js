@@ -11,12 +11,14 @@
         // ipad pro resolution is 2048x2732, so max height of each, with nav is 682
         $scope.ozone = {
             tabName: 'Ozone',
+            dataName: 'ozone',
             datatype:'ozone',
             range:'oneweek',
             axis_y_label: "Ozone (parts per billion)"
         };
         $scope.pm = {
             tabName: 'Particulate Matter',
+            dataName: 'pm',
             datatype:'pm',
             range:'oneweek',
             axis_y_label: "PM2.5 &mu;g/m<sup>3</sup>"

@@ -1,30 +1,81 @@
 <div ng-controller="graphCtrl">
 
     <md-content>
-    <md-tabs md-dynamic-height md-border-bottom>
-      <md-tab label="{{ozone.tabName}}">
-        <md-content class="md-padding">
-          <tab-generator data="ozone"></tab-generator>
-        </md-content>
-      </md-tab>
-      <md-tab label="{{pm.tabName}}">
-        <md-content class="md-padding">
-          <tab-generator data="pm"></tab-generator>
-        </md-content>
-      </md-tab>
-    </md-tabs>
-  </md-content>
-    
-    
-    
-    
-<scied-modal visible="showCreditsModal" modaltitle="creditstitle">
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="{{ozone.tabName}}">
+                <md-content class="md-padding">
+                    <tab-generator data="ozone"></tab-generator>
+                </md-content>
+            </md-tab>
+            <md-tab label="{{pm.tabName}}">
+                <md-content class="md-padding">
+                    <tab-generator data="pm"></tab-generator>
+                </md-content>
+            </md-tab>
+            <md-tab label="Air Quality Advisory">
+                <md-content class="md-padding">
+                    <div class="aq_advisory">
+                        <div class="left col">
+                            <div class="advisory"><img src="http://www.colorado.gov/airquality/psi/adv.png" border="0" alt="Advisory" /></div>
+                        </div>
+                        <div class="right_col">
+                            <table class="output2">
+                                <tbody>
+                                    <tr>
+
+                                        <td class="headerCell2">Air Quality Index Levels of Health Concern</td>
+                                        <td class="headerCell2">Numerical Value</td>
+                                        <td colspan="3" class="headerCell2">Meaning</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="headerCell2Good">Good</td>
+                                        <td class="headerCell2Good">0 to 50</td>
+                                        <td class="headerCell2Good">Air quality is considered satisfactory, and air pollution poses little or no risk</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="headerCell2Moderate">Moderate</td>
+                                        <td class="headerCell2Moderate">51 to 100</td>
+                                        <td class="headerCell2Moderate">Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="headerCell2Poor">Unhealthy for Sensitive Groups</td>
+                                        <td class="headerCell2Poor">101 to 150</td>
+                                        <td class="headerCell2Poor">Members of sensitive groups may experience health effects. The general public is not likely to be affected.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="headerCell2Unhealthy">Unhealthy</td>
+                                        <td class="headerCell2Unhealthy">151 to 200</td>
+                                        <td class="headerCell2Unhealthy">Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="headerCell2ExtPoor">Very Unhealthy</td>
+                                        <td class="headerCell2ExtPoor">201 to 300</td>
+                                        <td class="headerCell2ExtPoor">Health alert: everyone may experience more serious health effects</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="headerCell2Hazardous">Hazardous</td>
+                                        <td class="headerCell2Hazardous">300 to 500</td>
+                                        <td class="headerCell2Hazardous">Health warnings of emergency conditions. The entire population is more likely to be affected. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p><img src="/assets/apps/aq/aq_advisory_description.jpg"></p>
+                        </div>
+
+
+                    </div>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+
+
+
+
+    <scied-modal visible="showCreditsModal" modaltitle="creditstitle">
         <div class="creditspage">
-            <img src="/assets/images/climate_exhibit_co2/scied.png" alt="UCAR Center for Science Education">
-            <p>This interactive was created by the UCAR Center for Science Education.</p><p>Mauna Loa data provided by Ralph Keeling and the Scripps CO<sub>2</sub> Program. Niwot Ridge and Mesa Lab data provided by Britton Stephens and NCAR.</p>
-            
-            <img src="/assets/images/climate_exhibit_co2/ncar.png" alt="NCAR"><img src="/assets/images/climate_exhibit_co2/sio_logo.png" alt="Scripps">
-            
+
+
         </div>
         <md-button class="md-raised md-cornered closeBtn" ng-click="closeModal();">Close</md-button>
     </scied-modal>

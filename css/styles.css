@@ -87,3 +87,166 @@ body {
 .homeBtn {
     width:300px;
 }
+.aq_advisory {
+    width:1920px;
+}
+.advisory {
+    float:left;
+}
+table.output2
+{
+    FONT-FAMILY: Arial;
+    border: solid #777777;
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 0;
+    width:700px;
+    display: inline-block;
+    margin-left:20px;
+    margin-bottom:20px;
+} 
+td.headerCell2
+{
+    background-color:#cccccc;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+	border: solid #e9e9e9;
+	border-width: 1px 1px 1px 1px;
+	padding: 2px 3px 2px 3px;
+}
+td.cellTxt2
+{
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #000000;
+	border: solid #777777;
+	border-width: 1px 1px 1px 1px;
+	padding: 2px 3px 2px 3px;
+} 
+td.headerCell2Good
+{
+	background-color: #00e400;
+	color: #000000;
+	border: solid #4c984c;
+	border-width: 1px 1px 1px 1px;
+	padding: 2px 3px 2px 3px;
+}   
+td.headerCell2Moderate
+{
+	background-color: #ffff00;
+	color: #000000;
+	border: solid #cccb32;
+	border-width: 1px 1px 1px 1px;
+	padding: 2px 3px 2px 3px;
+}
+td.headerCell2Poor
+{
+	background-color: #ff7e00;
+	color: #ffffff;
+	border: solid #c17c3f;
+	border-width: 1px 1px 1px 1px;
+	padding: 2px 3px 2px 3px;
+}
+td.headerCell2Unhealthy
+{
+	background-color: #ff0000;
+	color: #ffffff;
+	border: solid #af5153;
+	border-width: 1px 1px 1px 1px;
+	padding: 2px 3px 2px 3px;
+}
+td.headerCell2ExtPoor
+{
+	background-color: #9c004a;
+	color: #ffffff;
+	border: solid #6e2e4c;
+	border-width: 1px 1px 1px 1px;
+	padding: 2px 3px 2px 3px;
+}
+td.headerCell2Hazardous
+{
+	background-color: #7e0023;
+	color: #ffffff;
+	border: solid #5b2332;
+	border-width: 1px 1px 1px 1px;
+	padding: 2px 3px 2px 3px;
+}
+td.cellTxt2Good
+{
+	background-color: #00e400;
+	color: #000000;
+	PADDING-RIGHT: 4px;
+    PADDING-LEFT: 4px;
+    PADDING-BOTTOM: 3px;
+    PADDING-TOP: 3px;
+    BORDER-LEFT: #ddd 1px solid;
+	BORDER-RIGHT: #ddd 1px solid;
+    BORDER-BOTTOM: #ddd 1px solid;
+}  
+td.cellTxt2Moderate
+{
+	background-color: #ffff00;
+	color: #000000;
+	PADDING-RIGHT: 4px;
+    PADDING-LEFT: 4px;
+    PADDING-BOTTOM: 3px;
+    PADDING-TOP: 3px;
+    BORDER-LEFT: #ddd 1px solid;
+	BORDER-RIGHT: #ddd 1px solid;
+    BORDER-BOTTOM: #ddd 1px solid;
+}
+td.cellTxt2Poor
+{
+	background-color: #ff7e00;
+	color: #ffffff;
+	PADDING-RIGHT: 4px;
+    PADDING-LEFT: 4px;
+    PADDING-BOTTOM: 3px;
+    PADDING-TOP: 3px;
+    BORDER-LEFT: #ddd 1px solid;
+	BORDER-RIGHT: #ddd 1px solid;
+    BORDER-BOTTOM: #ddd 1px solid;
+}
+td.cellTxt2Unhealthy
+{
+	background-color: #ff0000;
+	color: #ffffff;
+	PADDING-RIGHT: 4px;
+    PADDING-LEFT: 4px;
+    PADDING-BOTTOM: 3px;
+    PADDING-TOP: 3px;
+    BORDER-LEFT: #ddd 1px solid;
+	BORDER-RIGHT: #ddd 1px solid;
+    BORDER-BOTTOM: #ddd 1px solid;
+}
+td.cellTxt2ExtPoor
+{
+	background-color: #9c004a;
+	color: #ffffff;
+	PADDING-RIGHT: 4px;
+    PADDING-LEFT: 4px;
+    PADDING-BOTTOM: 3px;
+    PADDING-TOP: 3px;
+    BORDER-LEFT: #ddd 1px solid;
+	BORDER-RIGHT: #ddd 1px solid;
+    BORDER-BOTTOM: #ddd 1px solid;
+}
+td.cellTxt2Hazardous
+{
+	background-color: #7e0023;
+	color: #ffffff;
+	PADDING-RIGHT: 4px;
+    PADDING-LEFT: 4px;
+    PADDING-BOTTOM: 3px;
+    PADDING-TOP: 3px;
+    BORDER-LEFT: #ddd 1px solid;
+	BORDER-RIGHT: #ddd 1px solid;
+    BORDER-BOTTOM: #ddd 1px solid;
+}
+.left_col, 
+.right_col {
+    width:300px;
+    float:left;
+}

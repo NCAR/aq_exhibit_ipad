@@ -15,7 +15,73 @@
             <md-tab label="Air Quality Advisory">
                 <md-content class="md-padding">
                     <div class="aq_advisory">
-                        <div class="left col">
+                        <div class="left_col">
+                            <div style="border: 10px solid #f5f5f5; padding: 3px; width: 320px;"><img alt="Regional Air Quality Council" src="http://www.colorado.gov/airquality/psi/raqc_adv.png" border="0" /></div>
+                        </div>
+                        <div class="right_col">
+
+                            <table class="gridtable" style="margin-bottom:10px" width="650px">
+                                <tbody>
+                                    <tr>
+                                        <th>Air Quality Index Levels of Health Concern</th>
+                                        <th> Numerical
+                                            <br> Value
+                                        </th>
+                                        <th>Meaning</th>
+                                    </tr>
+
+                                    <tr class="aqi-green" style="font-weight:bold">
+                                        <td>
+                                            <a name="good" id="good2"></a>Good</td>
+                                        <td>0 to 50</td>
+                                        <td style="text-align:left">Air quality is considered satisfactory, and air pollution poses little or no risk.</td>
+                                    </tr>
+
+                                    <tr class="aqi-yellow" style="font-weight:bold">
+                                        <td>
+                                            <a name="mod" id="mod"></a>Moderate</td>
+                                        <td>51 to 100</td>
+                                        <td style="text-align:left">Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.</td>
+                                    </tr>
+
+                                    <tr class="aqi-orange" style="font-weight:bold">
+                                        <td>
+                                            <a name="sens" id="sens"></a>Unhealthy for Sensitive Groups</td>
+                                        <td>101 to 150</td>
+                                        <td style="text-align:left">Members of sensitive groups may experience health effects. The general public is not likely to be affected. </td>
+                                    </tr>
+
+                                    <tr class="aqi-red" style="font-weight:bold">
+                                        <td>
+                                            <a name="unh" id="unh"></a>Unhealthy</td>
+                                        <td>151 to 200</td>
+                                        <td style="text-align:left">Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.</td>
+                                    </tr>
+
+                                    <tr class="aqi-purple" style="font-weight:bold">
+                                        <td>
+                                            <a name="vunh" id="vunh"></a>Very Unhealthy </td>
+                                        <td>201 to 300</td>
+                                        <td style="text-align:left">Health alert: everyone may experience more serious health effects.</td>
+                                    </tr>
+
+                                    <tr class="aqi-maroon" style="font-weight:bold">
+                                        <td height="43">
+                                            <a name="haz" id="haz"></a>Hazardous</td>
+                                        <td>301 to 500</td>
+                                        <td style="text-align:left">Health warnings of emergency conditions. The entire population is more likely to be affected.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="3">
+                                            <p style="font-size:9px" align="left"><em>Note: Values above 500 are considered Beyond the AQI. Follow recommendations for the "Hazardous category." </em></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--//
+                        <div class="left_col">
                             <div class="advisory"><img src="http://www.colorado.gov/airquality/psi/adv.png" border="0" alt="Advisory" /></div>
                         </div>
                         <div class="right_col">
@@ -61,7 +127,7 @@
                             </table>
                             <p><img src="/assets/apps/aq/aq_advisory_description.jpg"></p>
                         </div>
-
+//-->
 
                     </div>
                 </md-content>

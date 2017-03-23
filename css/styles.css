@@ -93,6 +93,8 @@ body {
 .advisory {
     float:left;
 }
+
+/* if using cdphe */
 table.output2
 {
     FONT-FAMILY: Arial;
@@ -247,6 +249,60 @@ td.cellTxt2Hazardous
 }
 .left_col, 
 .right_col {
-    width:300px;
     float:left;
+    margin-left: 20px;
+}
+.left_col {
+    width:400px;
+}
+.right_col {
+    width:700px;
+}
+
+/* if using airnow */
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 10px;
+	border-style: solid;
+	border-color: #FFF;
+	background-color:#E1EBF4;
+	color:#005E9E;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 10px;
+	border-style: solid;
+	border-color: #FFF;
+	}
+
+
+.aqi-green {
+	background-color: #00E400
+}
+.aqi-yellow {
+	background-color:#FFFF00
+}
+.aqi-orange {
+	background-color:#FF7E00;
+	color:#FFFFFF;
+}
+.aqi-red {
+	background-color:#FF0000;
+	color:#FFFFFF;
+}
+.aqi-maroon {
+	background-color:#7E0023;
+	color:#FFFFFF;
+}
+.aqi-purple {
+	background-color: rgb(143, 63, 151);
+		color:#FFFFFF;
 }
